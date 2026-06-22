@@ -8,7 +8,7 @@ function user_play_validate() {
         userPlay = prompt("It's your turn, human! I don't have all day...");
 
         if (!gameValues.includes(userPlay)) {
-            alert("The game is called... Rock, Paper, Scissor!!! So, insert your play currectly, filthy human!!!");
+            alert("The game is called... Rock, Paper, Scissor!!! So, insert your play currectly... FILTHY HUMAN!!!");
         }
     }
 
