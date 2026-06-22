@@ -6,7 +6,6 @@ function game() {
     for (let round = 1; round <= 5; round++) {
         const playerSelection = user_play_validate();
         const computerSelection = computer_play(gameValues);
-
         const roundResult = playRound(playerSelection, computerSelection);
 
         console.log(roundResult);
@@ -40,7 +39,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 const playerSelection = "rock";
-const computerSelection = computer_play();
+const computerSelection = computer_play(gameValues);
 console.log(playRound(playerSelection, computerSelection));
 
 
