@@ -1,5 +1,5 @@
 function userPlayValidate() {
-    let userPlay = prompt("Your turn human! Now, play!!!"," ");
+    let userPlay = prompt("It's your turn, human!"," ");
     if (userPlay != null){
     console.log(userPlay);
     }
