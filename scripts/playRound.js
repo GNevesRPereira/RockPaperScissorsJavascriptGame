@@ -1,3 +1,3 @@
-function playRound(){
-    
+function playRound(computerSelection, playerSelection){
+
 }
