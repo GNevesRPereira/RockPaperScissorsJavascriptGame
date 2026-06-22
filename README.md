@@ -1,1 +1,1 @@
-The rendered page like, will be posted here later, once everything is deployed.
+The rendered page link, will be posted here later, once everything is deployed.
