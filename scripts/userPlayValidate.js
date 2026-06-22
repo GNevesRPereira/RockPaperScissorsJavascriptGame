@@ -3,5 +3,8 @@ function userPlayValidate() {
 
     if (userPlay !== "") {
         console.log(userPlay);
+    }else{
+        alert("Insert your play, properly human!!!");
     }
+
 }
