@@ -5,10 +5,10 @@ function user_play_validate() {
     let userPlay;
 
     while (!gameValues.includes(userPlay)) {
-        userPlay = prompt("It's your turn, human!");
+        userPlay = prompt("It's your turn, human! I don't have all day...");
 
         if (!gameValues.includes(userPlay)) {
-            alert("Insert your play, properly human!!!");
+            alert("The game is called... Rock, Paper, Scissor!!! So, insert your play currectly, filthy human!!!");
         }
     }
 
