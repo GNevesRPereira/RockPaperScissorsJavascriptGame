@@ -1,6 +1,6 @@
 
 const computerSelection = computerRandomGameValue;
-const playerSelection = userPlayValidate();
+const playerSelection = user_play_validate();
 
 function playRound(computerSelection, playerSelection) {
     console.log(playerSelection);
