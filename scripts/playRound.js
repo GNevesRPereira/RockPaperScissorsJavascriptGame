@@ -5,8 +5,8 @@ const computerSelection = computerRandomGameValue;
 function playRound(playerSelection, computerSelection) {
 
     if (playerSelection !== null) {
-        console.log(playerSelection);
-        console.log(computerSelection);
+        console.log("player selected:",playerSelection);
+        console.log("computer selected:",computerSelection);
     }
 
 }
