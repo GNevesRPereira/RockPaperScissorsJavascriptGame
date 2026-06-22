@@ -21,6 +21,11 @@ function computer_play(arr) {
 }
 
 
-const computerRandomGameValue = computer_play(gameValues);
+// const computerRandomGameValue = computer_play(gameValues);
 
 
+export {
+    gameValues,
+    user_play_validate,
+    computer_play
+ }
