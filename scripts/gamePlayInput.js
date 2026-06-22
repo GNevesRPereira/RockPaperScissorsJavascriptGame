@@ -6,7 +6,7 @@ function computer_play(arr) {
     return arr[randomSelect];
 }
 
-function userPlayValidate() {
+function user_play_validate() {
     let userPlay = prompt("It's your turn, human!", " ");
 
     if (userPlay == "") {
