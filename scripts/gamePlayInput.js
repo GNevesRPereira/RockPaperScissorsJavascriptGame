@@ -1,14 +1,18 @@
 
-const gameValues = ["Rock", "Paper", "Scissor"];
+const gameValues = ["rock", "paper", "scissor"];
 
 function user_play_validate() {
-    let userPlay = prompt("It's your turn, human!");
+    let userPlay;
 
-    if (gameValues.includes(userPlay)) {
-        console.log(userPlay);
-    } else {
-        alert("Insert your play, properly human!!!");
+    while (!gameValues.includes(userPlay)) {
+        userPlay = prompt("It's your turn, human!");
+
+        if (!gameValues.includes(userPlay)) {
+            alert("Insert your play, properly human!!!");
+        }
     }
+
+    console.log(userPlay);
 }
 
 function computer_play(arr) {
