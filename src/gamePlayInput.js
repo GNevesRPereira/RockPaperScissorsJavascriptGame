@@ -1,19 +1,38 @@
 
-const gameValues = ["rock", "paper", "scissor"];
+const gameValues = ["rock", "paper", "scissors"];
 
 function user_play_validate() {
-    let userPlay;
+    let invalidAttempts = 0;
 
-    while (!gameValues.includes(userPlay)) {
-        userPlay = prompt("It's your turn, human! I don't have all day...");
+    while (true) {
+        let userPlay = prompt("It's your turn, human! I don't have all day...");
 
-        if (!gameValues.includes(userPlay)) {
-            alert("The game is called... Rock, Paper, Scissor!!! So, insert your play currectly... FILTHY HUMAN!!!");
+        if (userPlay === null) {
+            invalidAttempts++;
+            alert("You cannot escape me, human. Choose Rock, Paper or Scissors!");
+            continue;
+        }
+
+        userPlay = userPlay.trim().toLowerCase();
+
+        if (userPlay === "scissor") {
+            userPlay = "scissors";
+        }
+
+        if (gameValues.includes(userPlay)) {
+            return userPlay;
+        }
+
+        invalidAttempts++;
+
+        if (invalidAttempts >= 3) {
+            alert("Human... the game is called Rock, Paper, Scissors. Focus.");
+        } else {
+            alert("Insert your play correctly: Rock, Paper or Scissors!");
         }
     }
-
-    return (userPlay);
 }
+
 
 function computer_play(arr) {
     const randomSelect = Math.floor(Math.random() * arr.length);
