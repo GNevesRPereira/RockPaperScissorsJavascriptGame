@@ -68,9 +68,6 @@ function getRandomItem(items) {
 function computerPlay() {
     return getRandomItem(gameValues);
 }
-function computerPlay() {
-    return getRandomItem(gameValues);
-}
 
 export {
     gameValues,
