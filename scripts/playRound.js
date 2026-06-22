@@ -1,8 +1,8 @@
 
-const computerSelection = computerRandomGameValue;
 const playerSelection = user_play_validate();
+const computerSelection = computerRandomGameValue;
 
-function playRound(computerSelection, playerSelection) {
+function playRound(playerSelection, computerSelection) {
 
     if (playerSelection !== null) {
         console.log(playerSelection);
@@ -11,5 +11,5 @@ function playRound(computerSelection, playerSelection) {
 
 }
 
-playRound(computerSelection, playerSelection);
+playRound(playerSelection, computerSelection);
 
