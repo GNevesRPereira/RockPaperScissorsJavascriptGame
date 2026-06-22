@@ -29,7 +29,7 @@ function userPlayValidate() {
         } else if (invalidAttempts >= 2) {
             alert("Seriously?!! Come on... Insert your play correctly: Rock, Paper or Scissors!");
         } else if (invalidAttempts >= 3) {
-            alert("Seriously?!! Come on... Once again it's: Rock, Paper or Scissors!");
+            alert("You must  be pulling my leg, or something... Come on... Once again it's: Rock, Paper or Scissors!");
         } else if (invalidAttempts >= 4) {
             alert("You can't be this stupid... It's Rock, Paper or Scissors!ROCK, PAPER OR SCISSORS! YOU DOLT!!!");
         } else if (invalidAttempts >= 5) {
