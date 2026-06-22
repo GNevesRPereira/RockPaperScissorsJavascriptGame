@@ -1,9 +1,9 @@
 
 const gameValues = ["Rock", "Paper", "Scissor"];
 
-function computerPlay(arr){
+function computer_play(arr){
 const randomSelect = Math.floor(Math.random() * arr.length);
 return arr[randomSelect];
 }
-    const randomGameValue = computerPlay(gameValues);
-    console.log(randomGameValue);
+    const computerRandomGameValue = computer_play(gameValues);
+    console.log(computerRandomGameValue);
