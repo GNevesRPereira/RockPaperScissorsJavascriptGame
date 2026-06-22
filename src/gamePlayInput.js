@@ -1,3 +1,9 @@
+export {
+    gameValues,
+    userPlayValidate,
+    computerPlay
+};
+
 const gameValues = ["rock", "paper", "scissors"];
 
 function userPlayValidate() {
@@ -24,31 +30,25 @@ function userPlayValidate() {
 
         invalidAttempts++;
 
-        if (invalidAttempts >= 1) {
-            alert("Human... the game is called Rock, Paper, Scissors. Focus.");
-        } else if (invalidAttempts >= 2) {
-            alert("Seriously?!! Come on... Insert your play correctly: Rock, Paper or Scissors!");
+        if (invalidAttempts >= 5) {
+            alert("I would recommend, that you should be neutered, in order to ensure the future of your species...You can at least, write ROCK, PAPER OR SCISSORS... RIGHT?!! Go on, i believe in you");
+        } else if (invalidAttempts >= 4) {
+            alert("You really cannot be this dysfunctional... It's Rock, Paper or Scissors! ROCK, PAPER OR SCISSORS! YOU DEVOLVED INBRED!!!");
         } else if (invalidAttempts >= 3) {
             alert("You must  be pulling my leg, or something... Come on... Once again it's: Rock, Paper or Scissors!");
-        } else if (invalidAttempts >= 4) {
-            alert("You can't be this stupid... It's Rock, Paper or Scissors!ROCK, PAPER OR SCISSORS! YOU DOLT!!!");
-        } else if (invalidAttempts >= 5) {
-            alert("I would recommend, that you should be neutered, in order to ensure the future of your species...You can at least, write ROCK, PAPER OR SCISSORS... RIGHT?!! Go on, i believe in you");
-        }
-    
-        function getRandomItem(items) {
-            const randomIndex = Math.floor(Math.random() * items.length);
-            return items[randomIndex];
-        }
-
-        function computerPlay() {
-            return getRandomItem(gameValues);
-        }
-
-        export {
-            gameValues,
-            userPlayValidate,
-            computerPlay
-        };
+        } else if (invalidAttempts >= 2) {
+            alert("Seriously?!! Come on... Insert your play correctly: Rock, Paper or Scissors!");
+        } else if (invalidAttempts >= 1) {
+            alert("Human... the game is called Rock, Paper, Scissors. For once in your life, drop that TikTok nonsense, and try to focus.");
+        } 
     }
 }
+function getRandomItem(items) {
+    const randomIndex = Math.floor(Math.random() * items.length);
+    return items[randomIndex];
+}
+
+function computerPlay() {
+    return getRandomItem(gameValues);
+}
+
