@@ -2,28 +2,52 @@ import { userPlayValidate, computerPlay } from "./gamePlayInput.js";
 
 let computerScore = 0;
 let playerScore = 0;
-let gameFinished = false;
+let playerName;
+
+function getPlayerName() {
+     playerName = prompt("Before we start, tell me your name, human:");
+
+    if (playerName === null || playerName.trim() === "") {
+        alert("very funny, I'm gonna call you Human")
+        playerName = "Human";
+    }
+
+    return playerName.trim();
+}
+
+function initGame(){
+    console.log("Ah, console already open. Nerd detected. Good.");
+
+    alert(
+        "Welcome to Rock, Paper, Scissors.\n\n" +
+        "The Evil AI is waiting for you.\n\n" +
+        "Open the console with F12 or Ctrl + Shift + J to see the results, then press OK to start."
+    );
+    getPlayerName()
+
+    game();
+}
+ 
+
 function game() {
     for (let round = 1; round <= 5; round++) {
-        const playerSelection = userPlayValidate();
+        console.log(`Round ${round}`);
+
+        const playerSelection = userPlayValidate(playerName);
         const computerSelection = computerPlay();
 
         const roundResult = playRound(playerSelection, computerSelection);
-            console.log(`Round ${round}`);
             console.log(roundResult);
-            if(round ===5){
-                gameFinished = true;
-            }
     }
-      if(gameFinished === true){
         if(computerScore < playerScore){
-             console.log(`You Win, Final score: you ${playerScore} -- computer ${computerScore} `);
+             console.log(`You Win, Final score:${playerName} ${playerScore} -- computer ${computerScore} `);
         }else if(computerScore > playerScore){
-             console.log(`You Lost, Final score: you ${playerScore} -- computer ${computerScore} `);
+             console.log(`You Lost, Final score:${playerName} ${playerScore} -- computer ${computerScore} `);
         }else{
-             console.log(`A tie, Final score: you ${playerScore} -- computer ${computerScore} `);
+             console.log(`A tie, Final score: ${playerName} ${playerScore} -- computer ${computerScore} `);
     }
-    }   
+    
+    alert("Game is finished, now reload your page if you want to challenge me, the MASTERMIND!")
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -37,7 +61,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (player === computer) {
         return `It's a Tie! Both chose ${playerDisplay} 
-         Your score: ${playerScore} -- Computer score: ${computerScore}`;
+         ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
     }
 
     const beats = {
@@ -49,16 +73,13 @@ function playRound(playerSelection, computerSelection) {
     if (beats[player] === computer) {
         playerScore++;
         return `You Win! ${playerDisplay} beats ${computerDisplay}
-        Your score: ${playerScore} -- Computer score: ${computerScore}`;
+        ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
     } else {
         computerScore++;
         return `You Lose! ${computerDisplay} beats ${playerDisplay} 
-        Your score: ${playerScore} -- Computer score: ${computerScore}`;
+        ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
     }
    
 }
 
-
-
-
-game();
+initGame();

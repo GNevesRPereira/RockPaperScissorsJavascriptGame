@@ -1,27 +1,53 @@
-export {
-    gameValues,
-    userPlayValidate,
-    computerPlay
-};
-
 const gameValues = ["rock", "paper", "scissors"];
 
-function userPlayValidate() {
+function getInvalidInputMessage(invalidAttempts, playerName){
+    switch(invalidAttempts) {
+        case 1: 
+            return `${playerName}... the game is called Rock, Paper, Scissors. Focus.`;
+        case 2:
+            return "Seriously?! Come on... choose Rock, Paper or Scissors.";
+        case 3:
+            return "You must be pulling my leg... Once again: Rock, Paper or Scissors.";
+        case 4:
+            return "The Evil AI is losing patience. Rock. Paper. Scissors.";
+        case 5:
+            return `Final warning, ${playerName}. Type Rock, Paper or Scissors.`
+        default:
+            return "You are just typing at this point...";
+    }
+}
+const inputCorrections = {
+    scissor: {
+        value: "scissors",
+        message: "Really? 'Scissor'? Fine, human. I will assume you meant Scissors."
+    },
+    papers: {
+        value: "paper",
+        message: "How many papers do you need? One Paper is enough."
+    },
+    rocks: {
+        value: "rock",
+        message: "Rocks? Very funny. I will count it as Rock."
+    }
+};
+
+function userPlayValidate(playerName) {
     let invalidAttempts = 0;
+    let promptMessage = `It's your turn, ${playerName}! I don't have all day...`;
 
     while (true) {
-        let userPlay = prompt("It's your turn, human! I don't have all day...");
+        let userPlay = prompt(promptMessage);
 
         if (userPlay === null) {
-            invalidAttempts++;
-            alert("You cannot escape me, human. Choose Rock, Paper or Scissors!");
+            promptMessage = `You cannot escape me, ${playerName}. Choose Rock, Paper or Scissors!`;
             continue;
         }
 
         userPlay = userPlay.trim().toLowerCase();
 
-        if (userPlay === "scissor") {
-            userPlay = "scissors";
+      if (inputCorrections[userPlay]) {
+        console.log(inputCorrections[userPlay].message);
+        userPlay = inputCorrections[userPlay].value;
         }
 
         if (gameValues.includes(userPlay)) {
@@ -30,19 +56,10 @@ function userPlayValidate() {
 
         invalidAttempts++;
 
-        if (invalidAttempts >= 5) {
-            alert("I would recommend, that you should be neutered, in order to ensure the future of your species...You can at least, write ROCK, PAPER OR SCISSORS... RIGHT?!! Go on, i believe in you");
-        } else if (invalidAttempts >= 4) {
-            alert("You really cannot be this dysfunctional... It's Rock, Paper or Scissors! ROCK, PAPER OR SCISSORS! YOU DEVOLVED INBRED!!!");
-        } else if (invalidAttempts >= 3) {
-            alert("You must  be pulling my leg, or something... Come on... Once again it's: Rock, Paper or Scissors!");
-        } else if (invalidAttempts >= 2) {
-            alert("Seriously?!! Come on... Insert your play correctly: Rock, Paper or Scissors!");
-        } else if (invalidAttempts >= 1) {
-            alert("Human... the game is called Rock, Paper, Scissors. For once in your life, drop that TikTok nonsense, and try to focus.");
-        } 
+        promptMessage = getInvalidInputMessage(invalidAttempts, playerName);
     }
 }
+
 function getRandomItem(items) {
     const randomIndex = Math.floor(Math.random() * items.length);
     return items[randomIndex];
@@ -51,4 +68,12 @@ function getRandomItem(items) {
 function computerPlay() {
     return getRandomItem(gameValues);
 }
+function computerPlay() {
+    return getRandomItem(gameValues);
+}
 
+export {
+    gameValues,
+    userPlayValidate,
+    computerPlay
+};
