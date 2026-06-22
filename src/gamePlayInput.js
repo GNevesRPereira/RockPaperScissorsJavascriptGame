@@ -1,7 +1,6 @@
-
 const gameValues = ["rock", "paper", "scissors"];
 
-function user_play_validate() {
+function userPlayValidate() {
     let invalidAttempts = 0;
 
     while (true) {
@@ -33,18 +32,17 @@ function user_play_validate() {
     }
 }
 
-
-function computer_play(arr) {
-    const randomSelect = Math.floor(Math.random() * arr.length);
-    return arr[randomSelect];
+function getRandomItem(items) {
+    const randomIndex = Math.floor(Math.random() * items.length);
+    return items[randomIndex];
 }
 
-
-// const computerRandomGameValue = computer_play(gameValues);
-
+function computerPlay() {
+    return getRandomItem(gameValues);
+}
 
 export {
     gameValues,
-    user_play_validate,
-    computer_play
- }
+    userPlayValidate,
+    computerPlay
+};
