@@ -12,7 +12,7 @@ function user_play_validate() {
         }
     }
 
-    console.log(userPlay);
+    return (userPlay);
 }
 
 function computer_play(arr) {
@@ -22,5 +22,5 @@ function computer_play(arr) {
 
 
 const computerRandomGameValue = computer_play(gameValues);
-console.log(computerRandomGameValue);
+
 
