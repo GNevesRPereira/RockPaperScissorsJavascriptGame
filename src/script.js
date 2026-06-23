@@ -4,6 +4,8 @@ let computerScore = 0;
 let playerScore = 0;
 let playerName;
 
+const wait = () => new Promise(resolve => setTimeout(resolve, 0));
+
 function getPlayerName() {
      playerName = prompt("Before we start, tell me your name, human:");
 
@@ -14,10 +16,7 @@ function getPlayerName() {
 
     return playerName.trim();
 }
-
 function initGame(){
-    console.log("Ah, console already open. Nerd detected. Good.");
-
     alert(
         "Welcome to Rock, Paper, Scissors.\n\n" +
         "The Evil AI is waiting for you.\n\n" +
@@ -29,8 +28,11 @@ function initGame(){
 }
  
 
-function game() {
+async function game() {
     for (let round = 1; round <= 5; round++) {
+
+        await wait()
+
         console.log(`Round ${round}`);
 
         const playerSelection = userPlayValidate(playerName);
@@ -40,11 +42,11 @@ function game() {
             console.log(roundResult);
     }
         if(computerScore < playerScore){
-             console.log(`You Win, Final score:${playerName} ${playerScore} -- computer ${computerScore} `);
+             console.log(`You Win, Final score: ${playerName} : ${playerScore} -- Evil AI ${computerScore} `);
         }else if(computerScore > playerScore){
-             console.log(`You Lost, Final score:${playerName} ${playerScore} -- computer ${computerScore} `);
+             console.log(`You Lost, Final score: ${playerName} : ${playerScore} -- Evil AI ${computerScore} `);
         }else{
-             console.log(`A tie, Final score: ${playerName} ${playerScore} -- computer ${computerScore} `);
+             console.log(`A tie, Final score: ${playerName} :  ${playerScore} -- Evil AI ${computerScore} `);
     }
     
     alert("Game is finished, now reload your page if you want to challenge me, the MASTERMIND!")
@@ -61,7 +63,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (player === computer) {
         return `It's a Tie! Both chose ${playerDisplay} 
-         ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
+         ${playerName} score: ${playerScore} -- Evil AI score: ${computerScore}`;
     }
 
     const beats = {
@@ -73,11 +75,11 @@ function playRound(playerSelection, computerSelection) {
     if (beats[player] === computer) {
         playerScore++;
         return `You Win! ${playerDisplay} beats ${computerDisplay}
-        ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
+        ${playerName} score: ${playerScore} -- Evil AI score: ${computerScore}`;
     } else {
         computerScore++;
         return `You Lose! ${computerDisplay} beats ${playerDisplay} 
-        ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
+        ${playerName} score: ${playerScore} -- Evil AI score: ${computerScore}`;
     }
    
 }
