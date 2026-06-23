@@ -15,18 +15,30 @@ function getPlayerName() {
     return playerName.trim();
 }
 
-function initGame(){
-    console.log("Ah, console already open. Nerd detected. Good.");
-
+function initInstructions(){
     alert(
         "Welcome to Rock, Paper, Scissors.\n\n" +
-        "The Evil AI is waiting for you.\n\n" +
-        "Open the console with F12 or Ctrl + Shift + J to see the results, then press OK to start."
+        "Open the console with F12 or Ctrl + Shift + J.\n\n" +
+        "Then type start() and press Enter to begin."
     );
-    getPlayerName()
+    console.log("Type start() to challenge the Evil AI.");
+}
+
+
+
+function startGame(){
+    playerScore = 0;
+    computerScore = 0;
+
+    playerName  = getPlayerName()
+
+    console.log(`The Evil AI accepts your challenge, ${playerName}.`);
 
     game();
+
+    return "Game completed. The Evil AI is waiting for a rematch.";
 }
+
  
 
 function game() {
@@ -40,11 +52,11 @@ function game() {
             console.log(roundResult);
     }
         if(computerScore < playerScore){
-             console.log(`You Win, Final score:${playerName} ${playerScore} -- computer ${computerScore} `);
+             console.log(`You Win, Final score: ${playerName} : ${playerScore} -- Evil AI : ${computerScore} `);
         }else if(computerScore > playerScore){
-             console.log(`You Lost, Final score:${playerName} ${playerScore} -- computer ${computerScore} `);
+             console.log(`You Lost, Final score: ${playerName} : ${playerScore} -- Evil AI : ${computerScore} `);
         }else{
-             console.log(`A tie, Final score: ${playerName} ${playerScore} -- computer ${computerScore} `);
+             console.log(`A tie, Final score: ${playerName} : ${playerScore} -- Evil AI : ${computerScore} `);
     }
     
     alert("Game is finished, now reload your page if you want to challenge me, the MASTERMIND!")
@@ -61,7 +73,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (player === computer) {
         return `It's a Tie! Both chose ${playerDisplay} 
-         ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
+         ${playerName} score: ${playerScore} -- Evil AI score: ${computerScore}`;
     }
 
     const beats = {
@@ -73,13 +85,15 @@ function playRound(playerSelection, computerSelection) {
     if (beats[player] === computer) {
         playerScore++;
         return `You Win! ${playerDisplay} beats ${computerDisplay}
-        ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
+        ${playerName} score: ${playerScore} -- Evil AI score: ${computerScore}`;
     } else {
         computerScore++;
         return `You Lose! ${computerDisplay} beats ${playerDisplay} 
-        ${playerName} score: ${playerScore} -- Computer score: ${computerScore}`;
+        ${playerName} score: ${playerScore} -- Evil AI score: ${computerScore}`;
     }
-   
 }
 
-initGame();
+initInstructions()
+window.start = startGame;
+window.startGame = startGame;
+window.s = startGame;
