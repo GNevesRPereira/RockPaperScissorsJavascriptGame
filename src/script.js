@@ -4,6 +4,8 @@ let computerScore = 0;
 let playerScore = 0;
 let playerName;
 
+const wait = () => new Promise(resolve => setTimeout(resolve, 0));
+
 function getPlayerName() {
      playerName = prompt("Before we start, tell me your name, human:");
 
@@ -14,35 +16,23 @@ function getPlayerName() {
 
     return playerName.trim();
 }
-
-function initInstructions(){
+function initGame(){
     alert(
         "Welcome to Rock, Paper, Scissors.\n\n" +
-        "Open the console with F12 or Ctrl + Shift + J.\n\n" +
-        "Then type start() and press Enter to begin."
+        "The Evil AI is waiting for you.\n\n" +
+        "Open the console with F12 or Ctrl + Shift + J to see the results, then press OK to start."
     );
-    console.log("Type start() to challenge the Evil AI.");
-}
-
-
-
-function startGame(){
-    playerScore = 0;
-    computerScore = 0;
-
-    playerName  = getPlayerName()
-
-    console.log(`The Evil AI accepts your challenge, ${playerName}.`);
+    getPlayerName()
 
     game();
-
-    return "Game completed. The Evil AI is waiting for a rematch.";
 }
-
  
 
-function game() {
+async function game() {
     for (let round = 1; round <= 5; round++) {
+
+        await wait()
+
         console.log(`Round ${round}`);
 
         const playerSelection = userPlayValidate(playerName);
@@ -52,11 +42,11 @@ function game() {
             console.log(roundResult);
     }
         if(computerScore < playerScore){
-             console.log(`You Win, Final score: ${playerName} : ${playerScore} -- Evil AI : ${computerScore} `);
+             console.log(`You Win, Final score: ${playerName} : ${playerScore} -- Evil AI ${computerScore} `);
         }else if(computerScore > playerScore){
-             console.log(`You Lost, Final score: ${playerName} : ${playerScore} -- Evil AI : ${computerScore} `);
+             console.log(`You Lost, Final score: ${playerName} : ${playerScore} -- Evil AI ${computerScore} `);
         }else{
-             console.log(`A tie, Final score: ${playerName} : ${playerScore} -- Evil AI : ${computerScore} `);
+             console.log(`A tie, Final score: ${playerName} :  ${playerScore} -- Evil AI ${computerScore} `);
     }
     
     alert("Game is finished, now reload your page if you want to challenge me, the MASTERMIND!")
@@ -91,9 +81,7 @@ function playRound(playerSelection, computerSelection) {
         return `You Lose! ${computerDisplay} beats ${playerDisplay} 
         ${playerName} score: ${playerScore} -- Evil AI score: ${computerScore}`;
     }
+   
 }
 
-initInstructions()
-window.start = startGame;
-window.startGame = startGame;
-window.s = startGame;
+initGame();
