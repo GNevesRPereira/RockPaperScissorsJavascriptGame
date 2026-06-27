@@ -39,7 +39,11 @@ function userPlayValidate(playerName) {
         let userPlay = prompt(promptMessage);
 
         if (userPlay === null) {
-            promptMessage = `You cannot escape me, ${playerName}. Choose Rock, Paper or Scissors!`;
+            const wantsToQuit = confirm("Are you sure you want to quit the game?");
+            
+            if (wantsToQuit) {
+                return null;
+            }
             continue;
         }
 

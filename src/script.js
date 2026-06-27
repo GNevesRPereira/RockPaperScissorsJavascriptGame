@@ -7,14 +7,26 @@ let playerName;
 const wait = () => new Promise(resolve => setTimeout(resolve, 0));
 
 function getPlayerName() {
-     playerName = prompt("Before we start, tell me your name, human:");
+    while (true) {
+            const name = prompt("Before we start, tell me your name, human:");
 
-    if (playerName === null || playerName.trim() === "") {
-        alert("very funny, I'm gonna call you Human")
-        playerName = "Human";
-    }
+            if (name === null) {
+                const wantsToQuit = confirm("Are you sure you want to quit the game?");
 
-    return playerName.trim();
+                if (wantsToQuit) {
+                    return null;
+                }
+
+                continue;
+            }
+
+            if (name.trim() === "") {
+                alert("Very funny, I'm gonna call you Human.");
+                return "Human";
+            }
+
+            return name.trim();
+        }
 }
 function initGame(){
     alert(
@@ -22,8 +34,12 @@ function initGame(){
         "The Evil AI is waiting for you.\n\n" +
         "Open the console with F12 or Ctrl + Shift + J to see the results, then press OK to start."
     );
-    getPlayerName()
+    playerName = getPlayerName()
 
+    if (playerName === null) {
+        console.log("Game closed before it even started. The EVIL AI is disappointed.");
+            return;
+    }
     game();
 }
  
@@ -36,6 +52,12 @@ async function game() {
         console.log(`Round ${round}`);
 
         const playerSelection = userPlayValidate(playerName);
+
+        if (playerSelection === null) {
+            console.log(`Game closed. The EVIL AI will wait for you, ${playerName}.`);
+            return;
+            }
+
         const computerSelection = computerPlay();
 
         const roundResult = playRound(playerSelection, computerSelection);
