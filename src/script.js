@@ -58,7 +58,9 @@ async function game() {
         const playerSelection = userPlayValidate(playerName);
 
         if (playerSelection === null) {
-            console.log(`Game closed. The EVIL AI will wait for you, ${playerName}.`);
+            console.log(`Game closed. The EVIL AI will wait for you, ${playerName}.\n\n` +
+                "Refresh the page to start a new game"
+             );
             return;
             }
 
