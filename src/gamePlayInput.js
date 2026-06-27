@@ -33,7 +33,7 @@ const inputCorrections = {
  
 function userPlayValidate(playerName) {
     let invalidAttempts = 0;
-    let promptMessage = `It's your turn, ${playerName}! I don't have all day... (type "quit" to leave the game)`;
+    let promptMessage = `It's your turn, ${playerName}! I don't have all day...`;
  
     while (true) {
         let userPlay = prompt(`${promptMessage}\n\nPress Cancel to quit the game.`);
