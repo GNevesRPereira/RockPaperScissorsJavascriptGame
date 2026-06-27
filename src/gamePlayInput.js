@@ -1,6 +1,5 @@
 const gameValues = ["rock", "paper", "scissors"];
-const QUIT_COMMAND = "quit";
- 
+
 function getInvalidInputMessage(invalidAttempts, playerName){
     switch(invalidAttempts) {
         case 1: 
@@ -37,26 +36,19 @@ function userPlayValidate(playerName) {
     let promptMessage = `It's your turn, ${playerName}! I don't have all day... (type "quit" to leave the game)`;
  
     while (true) {
-        let userPlay = prompt(promptMessage);
+        let userPlay = prompt(`${promptMessage}\n\nPress Cancel to quit the game.`);
  
         if (userPlay === null) {
-            promptMessage = `You cannot escape me, ${playerName}. Choose Rock, Paper or Scissors! (or type "quit" to leave)`;
+            const wantsToQuit = confirm("Are you sure you want to quit the game?");
+            
+            if (wantsToQuit) {
+                return null;
+            }
             continue;
         }
  
         userPlay = userPlay.trim().toLowerCase();
- 
-        if (userPlay === QUIT_COMMAND) {
-            const confirmQuit = confirm("Are you sure you want to quit the game?");
- 
-            if (confirmQuit) {
-                return QUIT_COMMAND;
-            }
- 
-            promptMessage = `Good, back to business, ${playerName}! Rock, Paper or Scissors?`;
-            continue;
-        }
- 
+
       if (inputCorrections[userPlay]) {
         console.log(inputCorrections[userPlay].message);
         userPlay = inputCorrections[userPlay].value;
@@ -85,6 +77,5 @@ export {
     gameValues,
     userPlayValidate,
     computerPlay,
-    QUIT_COMMAND
 };
  

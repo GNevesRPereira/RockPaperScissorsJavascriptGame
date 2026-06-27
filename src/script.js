@@ -8,6 +8,7 @@ const wait = () => new Promise(resolve => setTimeout(resolve, 0));
  
 function getPlayerName() {
     while (true) {
+<<<<<<< HEAD
         playerName = prompt('Before we start, tell me your name, human (or type "quit" to leave):');
  
         if (playerName === null || playerName.trim() === "") {
@@ -30,14 +31,38 @@ function getPlayerName() {
  
         return playerName;
     }
+=======
+            const name = prompt("Before we start, tell me your name, human:");
+
+            if (name === null) {
+                const wantsToQuit = confirm("Are you sure you want to quit the game?");
+
+                if (wantsToQuit) {
+                    return null;
+                }
+
+                continue;
+            }
+
+            if (name.trim() === "") {
+                alert("Very funny, I'm gonna call you Human.");
+                return "Human";
+            }
+
+            return name.trim();
+        }
+>>>>>>> experiment/gameClosing
 }
  
 function initGame(){
     alert(
         "Welcome to Rock, Paper, Scissors.\n\n" +
         "The Evil AI is waiting for you.\n\n" +
-        "Open the console with F12 or Ctrl + Shift + J to see the results, then press OK to start."
+        "Open the console with F12 or Ctrl + Shift + J to see the results.\n\n" +
+         "Press Cancel at any time if you want to quit the game.\n\n" +
+         "Press OK to start."
     );
+<<<<<<< HEAD
  
     const nameResult = getPlayerName();
  
@@ -47,6 +72,16 @@ function initGame(){
         return;
     }
  
+=======
+    playerName = getPlayerName()
+
+    if (playerName === null) {
+        console.log("Game closed before it even started. The EVIL AI is disappointed.\n\n" +
+            "Refresh the page to start a new game"
+        );
+            return;
+    }
+>>>>>>> experiment/gameClosing
     game();
 }
  
@@ -61,12 +96,21 @@ async function game() {
         console.log(`Round ${round}`);
  
         const playerSelection = userPlayValidate(playerName);
+<<<<<<< HEAD
  
         if (playerSelection === QUIT_COMMAND) {
             quit = true;
             break;
         }
  
+=======
+
+        if (playerSelection === null) {
+            console.log(`Game closed. The EVIL AI will wait for you, ${playerName}.`);
+            return;
+            }
+
+>>>>>>> experiment/gameClosing
         const computerSelection = computerPlay();
  
         const roundResult = playRound(playerSelection, computerSelection);
