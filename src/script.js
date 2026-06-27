@@ -78,7 +78,7 @@ async function game() {
  
 function endGame(quit) {
     if (quit) {
-        console.log(`${playerName} fled the battlefield! Final score: ${playerName}: ${playerScore} -- Evil AI: ${computerScore}`);
+        console.log(`${playerName} fled the battlefield!, Evil AI scared you Huh, A forfeit means Losing!!!`);
         alert(`You quit, ${playerName}? The Evil AI will remember this. Reload the page if you ever want a rematch.`);
         return;
     }
