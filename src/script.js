@@ -32,12 +32,16 @@ function initGame(){
     alert(
         "Welcome to Rock, Paper, Scissors.\n\n" +
         "The Evil AI is waiting for you.\n\n" +
-        "Open the console with F12 or Ctrl + Shift + J to see the results, then press OK to start."
+        "Open the console with F12 or Ctrl + Shift + J to see the results.\n\n" +
+         "Press Cancel at any time if you want to quit the game.\n\n" +
+         "Press OK to start."
     );
     playerName = getPlayerName()
 
     if (playerName === null) {
-        console.log("Game closed before it even started. The EVIL AI is disappointed.");
+        console.log("Game closed before it even started. The EVIL AI is disappointed.\n\n" +
+            "Refresh the page to start a new game"
+        );
             return;
     }
     game();

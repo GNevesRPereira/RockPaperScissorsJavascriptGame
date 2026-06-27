@@ -36,7 +36,7 @@ function userPlayValidate(playerName) {
     let promptMessage = `It's your turn, ${playerName}! I don't have all day...`;
 
     while (true) {
-        let userPlay = prompt(promptMessage);
+        let userPlay = prompt(`${promptMessage}\n\nPress Cancel to quit the game.`);
 
         if (userPlay === null) {
             const wantsToQuit = confirm("Are you sure you want to quit the game?");
