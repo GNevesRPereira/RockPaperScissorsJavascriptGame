@@ -1,5 +1,6 @@
 const gameValues = ["rock", "paper", "scissors"];
-
+const QUIT_COMMAND = "quit";
+ 
 function getInvalidInputMessage(invalidAttempts, playerName){
     switch(invalidAttempts) {
         case 1: 
@@ -30,47 +31,60 @@ const inputCorrections = {
         message: "Rocks? Very funny. I will count it as Rock."
     }
 };
-
+ 
 function userPlayValidate(playerName) {
     let invalidAttempts = 0;
-    let promptMessage = `It's your turn, ${playerName}! I don't have all day...`;
-
+    let promptMessage = `It's your turn, ${playerName}! I don't have all day... (type "quit" to leave the game)`;
+ 
     while (true) {
         let userPlay = prompt(promptMessage);
-
+ 
         if (userPlay === null) {
-            promptMessage = `You cannot escape me, ${playerName}. Choose Rock, Paper or Scissors!`;
+            promptMessage = `You cannot escape me, ${playerName}. Choose Rock, Paper or Scissors! (or type "quit" to leave)`;
             continue;
         }
-
+ 
         userPlay = userPlay.trim().toLowerCase();
-
+ 
+        if (userPlay === QUIT_COMMAND) {
+            const confirmQuit = confirm("Are you sure you want to quit the game?");
+ 
+            if (confirmQuit) {
+                return QUIT_COMMAND;
+            }
+ 
+            promptMessage = `Good, back to business, ${playerName}! Rock, Paper or Scissors?`;
+            continue;
+        }
+ 
       if (inputCorrections[userPlay]) {
         console.log(inputCorrections[userPlay].message);
         userPlay = inputCorrections[userPlay].value;
         }
-
+ 
         if (gameValues.includes(userPlay)) {
             return userPlay;
         }
-
+ 
         invalidAttempts++;
-
+ 
         promptMessage = getInvalidInputMessage(invalidAttempts, playerName);
     }
 }
-
+ 
 function getRandomItem(items) {
     const randomIndex = Math.floor(Math.random() * items.length);
     return items[randomIndex];
 }
-
+ 
 function computerPlay() {
     return getRandomItem(gameValues);
 }
-
+ 
 export {
     gameValues,
     userPlayValidate,
-    computerPlay
+    computerPlay,
+    QUIT_COMMAND
 };
+ 
